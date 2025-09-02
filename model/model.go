@@ -1,7 +1,7 @@
 package model
 
 import (
-	//"time"
+	"time"
 
 	"github.com/google/uuid"
 )
@@ -89,6 +89,14 @@ type Items struct {
 	Category string     `json:"category"`
 	Price       float64    `json:"price"`
 	Quantity    int        `json:"quantity"`
+}
+
+type Purchases struct {
+	ID          uuid.UUID `gorm:"type:uuid;default:gen_random_uuid();primaryKey" json:"id"`
+	ItemName    string    `json:"item_name"`
+	Quantity    int       `json:"quantity"`
+	TotalPrice  float64   `json:"total_price"`
+	PurchasedAt time.Time `gorm:"autoCreateTime" json:"purchased_at"`
 }
 
 

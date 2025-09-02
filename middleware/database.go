@@ -28,6 +28,7 @@ func ConnectDB() bool {
 	// 🟢 Auto Migration of models here
 	err := DBConn.AutoMigrate(
 		   &model.Items{},
+		   &model.Purchases{},
 		// &model.Account{},
 		// &model.ApprovalStatus{},
 		// &model.Document{},

@@ -19,6 +19,7 @@ func AppRoutes(app *fiber.App) {
 	//api.Post("/users", controller.CreateUser)
 	api.Post("/add",  controller.AddItem)
 	api.Get("/fetch",controller.GetItems)
+	api.Post("/buy",controller.AddPurchase)
 	//api.Post("/approval", controller.CreateApprovalStatus)
 	//api.Put("/users/:id/approve", controller.ApproveUser)
 	// api.Put("/users/:id", controller.UpdateUser)
