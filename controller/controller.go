@@ -5,6 +5,7 @@ import (
 	"context"
 	"intern_template_v1/middleware"
 	"intern_template_v1/model"
+	"strconv"
 	"time"
 
 	//"log"
@@ -160,10 +161,17 @@ import (
 func AddItem(c *fiber.Ctx) error {
     // Parse regular fields (not the file)
     newItem := new(model.Items)
-    if err := c.BodyParser(newItem); err != nil {
-        return c.Status(400).JSON(fiber.Map{"error": "Invalid request body"})
-    }
+    newItem.ProductName = c.FormValue("product_name")
+	newItem.Category = c.FormValue("category")
 
+	newItem.ProductName = c.FormValue("product_name")
+    newItem.Category = c.FormValue("category")
+
+    price, _ := strconv.ParseFloat(c.FormValue("price"), 64)
+    newItem.Price = price
+
+    qty, _ := strconv.Atoi(c.FormValue("quantity"))
+    newItem.Quantity = qty
     // Check if file exists
     fileHeader, err := c.FormFile("link")
     if err != nil {
